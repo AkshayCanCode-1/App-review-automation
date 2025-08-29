@@ -19,8 +19,9 @@ all_reviews = reviews_all(APP_ID, lang="en", country="in", sort=Sort.NEWEST)
 df = pd.DataFrame(all_reviews)
 
 # Keep only last 24 hours (IST)
+
 ist = pytz.timezone("Asia/Kolkata")
-df['at'] = pd.to_datetime(df['at']).dt.tz_convert(ist)
+df['at'] = pd.to_datetime(df['at']).dt.tz_localize("UTC").dt.tz_convert(ist)
 yesterday = datetime.now(ist) - timedelta(days=DAYS)
 df = df[df['at'] >= yesterday]
 
