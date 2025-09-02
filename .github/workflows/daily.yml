@@ -2,7 +2,7 @@ name: Daily Reviews WhatsApp
 
 on:
   schedule:
-    - cron: "30 1 * * *"  # Runs every day at 7:00 AM IST (1:30 AM UTC)
+    - cron: "48 3 * * *"  # Runs every day at 9:18 AM IST (3:48 AM UTC)
   workflow_dispatch:       # Lets you trigger manually too
 
 jobs:
@@ -28,4 +28,3 @@ jobs:
           TWILIO_NUMBER: ${{ secrets.TWILIO_NUMBER }}
           MY_NUMBER: ${{ secrets.MY_NUMBER }}
         run: python main.py
-
